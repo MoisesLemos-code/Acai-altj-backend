@@ -1,42 +1,42 @@
 const { Schema, model } = require('mongoose');
 
 const VendaSchema = new Schema({
-    numero: {
-        type: double,
-        required: true
-    },
-	statusVenda:{
+	numero: {
+		type: Schema.Types.Number,
+		required: true
+	},
+	statusVenda: {
 		type: Boolean,
 		required: true,
 		default: false
 	},
-    totalBruto: {
-        type: double,
-        required: true
-    },
+	totalBruto: {
+		type: Schema.Types.Decimal128,
+		required: true
+	},
 	totalFinal: {
-		type: double,
+		type: Schema.Types.Decimal128,
 		required: true
 	},
 	produtos: [
-	  {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'ItemVenda'
-	  }
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'ItemVenda'
+		}
 	],
 	cliente_id: {
-		type: mongoose.Schema.Types.ObjectId,
+		type: Schema.Types.ObjectId,
 		ref: 'Cliente',
-		required: true
+		required: false
 	},
 	usuario_id: {
-		type: mongoose.Schema.Types.ObjectId,
+		type: Schema.Types.ObjectId,
 		ref: 'User',
 		required: true
 	}
 },
-    {
-        timestamps: true
-    });
+	{
+		timestamps: true
+	});
 
 module.exports = model('Venda', VendaSchema);

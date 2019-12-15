@@ -16,7 +16,6 @@ io.on("connection", socket => {
     socket.on('connectRoom', file => {
         socket.join(file);
     });
-    console.log("socket.io")
 });
 
 mongoose.connect(process.env.MONGO_URL,
