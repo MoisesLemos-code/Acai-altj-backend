@@ -28,7 +28,7 @@ module.exports = {
 			const vendaInc = await Venda.create({ numero, statusVenda, totalBruto, totalFinal, cliente_id, usuario_id: req.userId });
 
 			await Promise.all(produtos.map(async item => {
-				const vendaItens = new ItemVenda({ ...item, venda_id: vendaInc._id });
+				const vendaItens = new ItemVenda({ ...item, venda_id: vendaInc._id, usuario_id: req.userId });
 
 				await vendaItens.save();
 
@@ -72,7 +72,7 @@ module.exports = {
 			await ItemVenda.deleteMany({ venda_id: vendaInc._id })
 
 			await Promise.all(produtos.map(async item => {
-				const vendaItens = new ItemVenda({ ...item, venda_id: vendaInc._id });
+				const vendaItens = new ItemVenda({ ...item, venda_id: vendaInc._id, usuario_id: req.userId });
 
 				await vendaItens.save();
 
