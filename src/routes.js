@@ -23,6 +23,7 @@ routes.get("/venda/list/", VendaController.list);
 routes.get("/venda/:id", VendaController.index);
 routes.get("/itemVenda/list/", ItemVendaController.list);
 routes.get("/itemVenda/:id", ItemVendaController.index);
+routes.get("/produto/search/:descricao", ProdutoController.indexName);
 
 routes.post("/sessions", SessionsController.store);
 
