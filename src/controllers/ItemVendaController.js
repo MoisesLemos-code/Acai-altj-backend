@@ -15,6 +15,10 @@ module.exports = {
   async list(req, res) {
     const itemInc = await ItemVenda.find({});
     return res.json(itemInc);
-  }
+  },
+  async destroy(req, res) {
+    await ItemVenda.deleteOne({ _id: req.params.id });
+    return res.json({ success: "ok" });
+  },
 
 }
