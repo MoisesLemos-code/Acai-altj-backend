@@ -45,6 +45,7 @@ module.exports = {
 	},
 	async destroy(req, res) {
 		try {
+			await ItemVenda.deleteMany({ venda_id: req.params.id })
 			await Venda.deleteOne({ _id: req.params.id });
 			return res.json({ success: "Registro removido com sucesso!" });
 		} catch (err) {
